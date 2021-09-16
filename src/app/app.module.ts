@@ -31,6 +31,9 @@ export const MATERIAL_MODULES = [
     ...MATERIAL_MODULES,
     StoreModule.forRoot(reducers, { metaReducers }),
   ],
+  exports: [
+    ...MATERIAL_MODULES,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
