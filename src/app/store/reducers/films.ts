@@ -36,7 +36,7 @@ export const initialState: State = {
   selected: null,
 };
 
-export function reducer(state = initialState, action: filmAction.Action) {
+export function reducer(state = initialState, action: filmAction.Actions) {
   switch (action.type) {
     case filmAction.ADD_ONE: {
       const newFilm: Film = action.payload;

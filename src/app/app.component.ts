@@ -1,10 +1,25 @@
 import { Component } from '@angular/core';
+import { Film } from './models';
+import { Store } from '@ngrx/store';
+import * as fromRoot from './store/reducers';
+import * as filmAction from './store/actions/films';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngrx-films-list';
+  films$: Observable<Film[]>;
+  selected$: Observable<Film>;
+
+  constructor(private store: Store<fromRoot.State>) {
+    this.films$ = store.select(fromRoot.getAllFilms);
+    this.selected$ = store.select(fromRoot.getSelectedFilm);
+  }
+
+  onSelect(id: number) {
+    this.store.dispatch(new filmAction.Select(id));
+  }
 }
