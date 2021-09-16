@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { reducers, metaReducers } from './store/reducers';
 import { StoreModule } from '@ngrx/store';
+import { CommonModule } from '@angular/common';
 
 export const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -26,12 +27,14 @@ export const MATERIAL_MODULES = [
     FilmSelectedComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     ...MATERIAL_MODULES,
     StoreModule.forRoot(reducers, { metaReducers }),
   ],
   exports: [
+    CommonModule,
     ...MATERIAL_MODULES,
   ],
   providers: [],
